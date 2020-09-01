@@ -27,7 +27,7 @@ const CircleMarkers = ({ markerData }) => {
           e.target.setStyle({ color: "red" });
         }}
         onclick={() => {
-          history.push(`/details/${country.country}`);
+          history.push(`/details/${country.country}`, { country });
         }}
       >
         <Popup>

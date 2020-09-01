@@ -15,7 +15,7 @@ const LeafletMap = () => {
     };
     fetchAPI();
   }, []);
-  console.log(markerData);
+
   return (
     <Map
       className="leaflet-map"
