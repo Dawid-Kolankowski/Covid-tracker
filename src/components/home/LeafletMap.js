@@ -1,6 +1,6 @@
 import "leaflet/dist/leaflet.css";
 import React, { useEffect, useState } from "react";
-import { Map, TileLayer, CircleMarker, Popup } from "react-leaflet";
+import { Map, TileLayer } from "react-leaflet";
 import { fetchCovidDataByCountry } from "../../api";
 import CircleMarkers from "./CircleMarkers";
 const LeafletMap = () => {

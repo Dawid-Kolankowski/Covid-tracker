@@ -19,8 +19,10 @@
   "homepage": "https://github.com/Dawid-Kolankowski/Covid-tracker#readme",
   "dependencies": {
     "axios": "^0.20.0",
+    "chart.js": "^2.9.3",
     "leaflet": "^1.6.0",
     "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
     "react-dom": "^16.13.1",
     "react-leaflet": "^2.7.0",
     "react-router-dom": "^5.2.0"
