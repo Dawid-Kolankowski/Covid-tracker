@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { fetchGlobalData, fetchWorldTimelineData } from "../../api";
 import Chart from "./Chart";
 import "./worldDetails.css";
+import { useHistory } from "react-router-dom";
 
 const worldDetails = () => {
   const [worldData, setWorldData] = useState([]);
-  // eslint-disable-next-line no-unused-vars
   const [chartData, setChartData] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     const fetchAPI = async () => {
       setWorldData(await fetchGlobalData());
@@ -18,51 +18,62 @@ const worldDetails = () => {
 
   return (
     <div className="world__container">
-      <button className="world__button">X</button>
-      <div className="world__cards-container">
+      <div className="world__container-button">
+        <button
+          className="world__button"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
+          X
+        </button>
+      </div>
+
+      <div className="world__container-cards">
+        <div>
+          <div className="world__cards-number">{worldData.active}</div>
+
+          <div>Active</div>
+        </div>
+        <div>
+          <div className="world__cards-number">{worldData.cases}</div>
+          <div>All cases</div>
+        </div>
+        <div>
+          <div className="world__cards-number">{worldData.critical}</div>
+          <div>Critical condition</div>
+        </div>
         <div>
           {" "}
-          {worldData.active}
-          <br />
-          Active
+          <div className="world__cards-number">{worldData.deaths}</div>
+          <div>Deaths</div>
         </div>
         <div>
-          {worldData.cases} <br />
-          All cases
-        </div>
-        <div>
-          {worldData.critical} <br />
-          Critical condition
-        </div>
-        <div>
-          {" "}
-          {worldData.deaths} <br />
-          Deaths
-        </div>
-        <div>
-          {worldData.recovered} <br />
+          <div className="world__cards-number">{worldData.recovered}</div>
           Today recovered
         </div>
         <div>
           {" "}
-          {worldData.tests} <br />
-          Total tests taken
+          <div className="world__cards-number">{worldData.tests}</div>
+          <div>Total tests taken</div>
         </div>
         <div>
-          {worldData.todayCases} <br />
-          Today cases
+          <div className="world__cards-number">{worldData.todayCases}</div>
+          <div>Today cases</div>
         </div>
         <div>
-          {" "}
-          {worldData.todayDeaths} <br />
-          Today deaths
+          <div className="world__cards-number">{worldData.todayDeaths}</div>
+          <div>Today deaths</div>
         </div>
         <div>
-          {worldData.todayRecovered} <br />
-          Today recovered
+          <div className="world__cards-number">{worldData.todayRecovered}</div>
+          <div>Today recovered</div>
         </div>
       </div>
-      <Chart chartData={chartData.reverse()} />
+
+      <div className="world__container-graph">
+        <Chart chartData={chartData.reverse()} />
+      </div>
     </div>
   );
 };

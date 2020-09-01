@@ -5,6 +5,7 @@ const Chart = ({ chartData }) => {
   const [data, setData] = useState({});
   console.log(chartData);
   const options = {
+    maintainAspectRatio: false,
     title: {
       display: true,
       text: "Coronavirus timeline stats",

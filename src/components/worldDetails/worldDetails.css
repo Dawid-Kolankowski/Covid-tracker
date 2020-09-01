@@ -1,29 +1,35 @@
 .world__container {
   display: flex;
-  flex-direction: column;
-}
-
-.world__cards-container {
-  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+.world__container-button {
+  width: 90%;
+  display: flex;
+  margin-top: 20px;
 }
 
-/* .world__cards-container > div {
-  flex-grow: 1;
-  width: 33%;
-  height: 100px;
-  text-align: center;
-  background-color: red;
-} */
-
-.world__cards-container > div {
+.world__container-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 90%;
+}
+.world__container-graph {
+  margin-top: 25px;
+  display: flex;
+  width: 85%;
+  height: 500px;
+}
+.world__container-cards > div {
   background-color: white;
   display: flex;
   width: 30%;
   align-items: center;
   justify-content: center;
-  flex: none;
+  flex-direction: column;
   padding-top: 20px;
   padding-bottom: 20px;
   cursor: default;
@@ -33,10 +39,11 @@
   text-align: center;
   margin: 10px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
-
   border-radius: 40px;
 }
-
+.world__cards-number {
+  font-size: 25px;
+}
 .world__button {
   background-color: white;
   display: flex;
@@ -46,13 +53,15 @@
   flex: none;
   padding-top: 10px;
   padding-bottom: 10px;
-
-  margin-top: 5px;
-  margin-bottom: 5px;
-
   margin: 10px;
-  margin-left: 50px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   border: 1px solid #dcdcdc;
   border-radius: 40px;
+}
+
+@media only screen and (max-width: 900px) {
+  .world__container-cards > div {
+    width: 48%;
+    margin: 0px 0px 15px 0px;
+  }
 }
