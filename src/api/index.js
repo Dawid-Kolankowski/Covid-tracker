@@ -2,9 +2,6 @@ import axios from "axios";
 
 const url = "https://corona.lmao.ninja/v3/covid-19";
 
-// https://api.thevirustracker.com/free-api?countryTimeline=US  dzienne przypadki dla kraju https://api.thevirustracker.com/free-api?countryTimeline=US
-//https://disease.sh/v3/covid-19/all statystyki swiata
-// https://corona-api.com/timeline swiat timeline
 export const fetchCovidDataByCountry = async () => {
   let countryUrl = `${url}/countries`;
 
@@ -34,6 +31,7 @@ export const fetchWorldTimelineData = async () => {
       data: { data },
     } = await axios.get("https://corona-api.com/timeline");
 
+    console.log(typeof data);
     const transformData = data.map((daily) => ({
       active: daily.active,
       confirmed: daily.confirmed,
@@ -42,6 +40,25 @@ export const fetchWorldTimelineData = async () => {
       recovered: daily.recovered,
     }));
 
+    return transformData;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCountryTimelineData = async (countryISO2) => {
+  try {
+    const {
+      data: { timeline },
+    } = await axios.get(`${url}/historical/${countryISO2}?lastdays=all`);
+
+    const transformData = Object.keys(timeline.cases).map((key) => ({
+      date: key,
+      cases: timeline.cases[key],
+      recovered: timeline.recovered[key],
+      deaths: timeline.deaths[key],
+    }));
+    console.log(transformData);
     return transformData;
   } catch (error) {
     console.log(error);

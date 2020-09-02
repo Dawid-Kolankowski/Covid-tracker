@@ -1,11 +1,23 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { fetchCountryTimelineData } from "../../api";
+import Chart from "./Chart";
 
 const countryDetails = () => {
   const history = useHistory();
   const location = useLocation();
-  console.log(location.state.country);
+
+  const [timelineData, setTimelineData] = useState([]);
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      setTimelineData(
+        await fetchCountryTimelineData(location.state.country.countryInfo.iso2)
+      );
+    };
+    fetchAPI();
+  }, []);
+
   return (
     <div className="world__container">
       <div className="world__container-button">
@@ -77,6 +89,10 @@ const countryDetails = () => {
           </div>
           <div>Today recovered</div>
         </div>
+      </div>
+      <div className="world__container-graph">
+        {" "}
+        <Chart chartData={timelineData} />{" "}
       </div>
     </div>
   );
