@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Line } from "react-chartjs-2";
 const Chart = ({ chartData }) => {
   const [data, setData] = useState({});
-  console.log(chartData);
+
   const options = {
     maintainAspectRatio: false,
     title: {

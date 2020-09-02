@@ -31,7 +31,6 @@ export const fetchWorldTimelineData = async () => {
       data: { data },
     } = await axios.get("https://corona-api.com/timeline");
 
-    console.log(typeof data);
     const transformData = data.map((daily) => ({
       active: daily.active,
       confirmed: daily.confirmed,
@@ -58,7 +57,7 @@ export const fetchCountryTimelineData = async (countryISO2) => {
       recovered: timeline.recovered[key],
       deaths: timeline.deaths[key],
     }));
-    console.log(transformData);
+
     return transformData;
   } catch (error) {
     console.log(error);
